@@ -2,6 +2,7 @@
 
 import random
 import cgi
+import os
 
 print 'content-type: text/html'
 #yes/no: does, has, can, shall, will, is, was
@@ -15,6 +16,17 @@ print 'content-type: text/html'
 #advice
 
 yesno = ['does', 'did', 'do', 'has', 'have', 'had', 'can', 'could', 'would', 'should', 'will', 'shall', 'is', 'was']
+
+polar = os.listdir("memes/polar")
+which = os.listdir("memes/which")
+why = os.listdir("memes/why")
+who = os.listdir("memes/who")
+when = os.listdir("memes/when")
+where = os.listdir("memes/where")
+how = os.listdir("memes/how")
+what = os.listdir("memes/what")
+
+advice = os.listdir("memes/what")
 
 def questionWord(ques):
    ques.split(' ')
