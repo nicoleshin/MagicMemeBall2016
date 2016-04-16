@@ -57,4 +57,4 @@ def image():
         return 6
     if questionWord(unenlightened) in yesno:
         return 7
-    return 8
+    return chooose(polar + which + why + who + when + where + how + what + advice)
