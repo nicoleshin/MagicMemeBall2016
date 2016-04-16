@@ -45,3 +45,4 @@ def image():
         return 6
     if questionWord(unenlightened) in yesno:
         return 7
+    return 8
