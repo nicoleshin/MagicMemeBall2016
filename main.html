@@ -5,6 +5,7 @@
 
         <title>Magic Meme Ball</title>
         <link href="materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <style>
             body {
                 width: 100%;
@@ -33,10 +34,14 @@
     <body>
         <div class="row center">
             <h2 class="header center">Ask the Magic Meme Ball
-                <br> any question your heart desires child</h2>
+                <br> any question your heart desires</h2>
         </div>
         <div>
-            <input type="text" name="quesiton" id="question" placeholder="Don't let your memes be dreams"><br>
+            <input type="text" name="quesiton" id="question" placeholder="Don't let your memes be dreams"
+            onkeydown = "if (event.keyCode == 13) document.getElementById('button').click()">
+        </div>
+        <div class="row center">
+            <a href="memes.py"><button class="btn waves-effect waves-light" id="button"  type="button">To Enlightenment...</button></a>
         </div>
     </body>
 </html>
