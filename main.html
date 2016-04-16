@@ -11,6 +11,22 @@
                 height: 100%;
                 color: white;
                 background-color: black;
+                padding-left: 200px;
+                padding-right: 200px;
+            }
+            ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+                color: gray;
+            }
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: gray;
+                opacity:  1;
+            }
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: gray;
+                opacity:  1;
+            }
+            :-ms-input-placeholder { /* Internet Explorer 10-11*/
+                color: gray;
             }
         </style>
     </head>
@@ -18,6 +34,9 @@
         <div class="row center">
             <h2 class="header center">Ask the Magic Meme Ball
                 <br> any question your heart desires child</h2>
+        </div>
+        <div>
+            <input type="text" name="quesiton" id="question" placeholder="Don't let your memes be dreams"><br>
         </div>
     </body>
 </html>
