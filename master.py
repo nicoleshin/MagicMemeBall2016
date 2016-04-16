@@ -42,19 +42,19 @@ def image():
     form = cgi.FieldStorage()
     unenlightened = form.getvalue('question')
     if questionWord(unenlightened) == 'what':
-        return 0
+        return choose(what)
     if questionWord(unenlightened) == 'who' or questionWord(unenlightened) == 'whose':
-        return 1
+        return choose(who)
     if questionWord(unenlightened) == 'which':
-        return 2
+        return choose(which)
     if questionWord(unenlightened) == 'why':
-        return 3
+        return choose(why)
     if questionWord(unenlightened) == 'where':
-        return 4
+        return choose(where)
     if questionWord(unenlightened) == 'when':
-        return 5
+        return choose(when)
     if questionWord(unenlightened) == 'how':
-        return 6
+        return choose(how)
     if questionWord(unenlightened) in yesno:
-        return 7
+        return choose(polar)
     return chooose(polar + which + why + who + when + where + how + what + advice)
