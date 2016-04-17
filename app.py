@@ -56,30 +56,36 @@ def quesImg(word):
         return 'fuqu'
     return path
 
-def getImage():
+def getImage(req):
     try:
         currPath = ''
         failsafe = []
-        form = request.form
-        unenlightened = form["question"]
-        currPath = quesImg(unenlightened)
+        print req
+        if request.method == "POST":
+            form = request.form
+            unenlightened = form["question"]
+            currPath = quesImg(unenlightened)
         if currPath != 'fuqu' and currPath != '':
+            print currPath
             return currPath
         else:
             for i in range(20):
                 failsafe.append(quesImg(choose(firstWords)) + ' ')
+            print failsafe
             return choose(failsafe)
     except:
+        print 'except'
         return "../static/memes/advice/getRekt.jpg"
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
     return render_template('questions.html')
 
 @app.route('/answers')
 @app.route('/answers/')
 def answers():
-    return render_template('answer.html', image=getImage())
+    req = request.method
+    return render_template('answer.html', image=getImage(req))
 
 @app.route('/advice')
 @app.route('/advice/')
