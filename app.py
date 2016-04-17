@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 yesno = ['does', 'did', 'do', 'has', 'have', 'had', 'can', 'could', 'would', 'should', 'will', 'shall', 'is', 'was']
-firstWords = yesno + ['which','why','who','whose','where','when','how','what','advice']
+firstWords = ['does','which','why','who','where','when','how','what','advice']
 
 polar = os.listdir("memes/polar")
 which = os.listdir("memes/which")
