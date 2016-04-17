@@ -81,8 +81,8 @@ def getImage(req):
 def index():
     return render_template('questions.html')
 
-@app.route('/answers')
-@app.route('/answers/')
+@app.route('/answers', methods=['GET','POST'])
+@app.route('/answers/', methods=['GET','POST'])
 def answers():
     req = request.method
     return render_template('answer.html', image=getImage(req))
@@ -91,6 +91,11 @@ def answers():
 @app.route('/advice/')
 def advice():
     return render_template('advice.html')
+
+@app.route('/advisory')
+@app.route('/advisory/')
+def advisory():
+    return render_template('answer.html', image=adviceImage())
 
 if __name__ == "__main__":
     app.run()

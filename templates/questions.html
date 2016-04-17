@@ -48,12 +48,13 @@
                 <br> any question your heart desires</h2>
         </div>
         <div id="text">
-            <form method="POST" action="/answers">
+            <form method="POST" action="/answers/">
                 <input name="question" type="text" id="question" placeholder="Don't let your memes be dreams"
-                onkeydown = "if (event.keyCode == 13) document.getElementById('button').click()">
+                onkeydown = "if (event.keyCode == 13)
+                document.getElementById('button').click();">
                 <div class="row center">
-                    <button href="/answers" class="btn waves-effect waves-light"
-                            id="button" type="submit">To Enlightenment...</button>
+                    <button class="btn waves-effect waves-light"
+                        id="button" type="submit">To Enlightenment...</button>
                 </div>
             </form>
         </div>
