@@ -9,14 +9,14 @@ app = Flask(__name__)
 yesno = ['does', 'did', 'do', 'has', 'have', 'had', 'can', 'could', 'would', 'should', 'will', 'shall', 'is', 'was']
 firstWords = ['does','which','why','who','where','when','how','what','advice']
 
-polar = os.listdir("memes/polar")
-which = os.listdir("memes/which")
-why = os.listdir("memes/why")
-who = os.listdir("memes/who")
-when = os.listdir("memes/when")
-where = os.listdir("memes/where")
-how = os.listdir("memes/how")
-what = os.listdir("memes/what")
+polar = os.listdir("static/memes/polar")
+which = os.listdir("static/memes/which")
+why = os.listdir("static/memes/why")
+who = os.listdir("static/memes/who")
+when = os.listdir("static/memes/when")
+where = os.listdir("static/memes/where")
+how = os.listdir("static/memes/how")
+what = os.listdir("static/memes/what")
 
 advice = os.listdir("memes/what")
 
