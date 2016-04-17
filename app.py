@@ -31,7 +31,10 @@ def questionWord(ques):
 def choose(memes):
     return random.choice(memes)
 
-def correctImg(word):
+def adviceImage(string):
+    return 'static/memes/advice/' + choose(advice)
+
+def quesImg(word):
     path = 'static/memes/'
     if questionWord(word) == 'what':
         path += 'what/' + choose(what)
@@ -55,9 +58,12 @@ def correctImg(word):
 
 def getImage():
     form = cgi.FieldStorage()
-    unenlightened = form.getvalue('question')
     failsafe = []
-    currPath = correctImg(unenlightened)
+    if form.getvalue('question'):
+        unenlightened = form.getvalue('question')
+        currPath = quesImg(unenlightened)
+    else:
+        currPath = adviceImage()
     if currPath != 'fuqu':
         return currPath
     else:
