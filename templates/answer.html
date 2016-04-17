@@ -32,15 +32,22 @@
             :-ms-input-placeholder { /* Internet Explorer 10-11*/
                 color: gray;
             }
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
     </head>
     <body>
         {% if image %}
-        <img src={{ image }}>
+        <img align="middle" src={{ image }}>
+        {% endif %}
+        <br>
         <div class="row center">
-            <a href="/questions"><button class="btn waves-effect waves-light"
+            <a href="/"><button class="btn waves-effect waves-light"
                     id="button"  type="button">More answers...</button></a>
-        or
+        &nbsp;&nbsp;or&nbsp;&nbsp;
             <a href="/advice"><button class="btn waves-effect waves-light"
                     id="button" type="button">More advice...</button></a>
         </div>

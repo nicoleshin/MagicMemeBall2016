@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import random
 import cgi
 import os
@@ -9,16 +9,16 @@ app = Flask(__name__)
 yesno = ['does', 'did', 'do', 'has', 'have', 'had', 'can', 'could', 'would', 'should', 'will', 'shall', 'is', 'was']
 firstWords = ['does','which','why','who','where','when','how','what','advice']
 
-polar = os.listdir("static/memes/polar")
-which = os.listdir("static/memes/which")
-why = os.listdir("static/memes/why")
-who = os.listdir("static/memes/who")
-when = os.listdir("static/memes/when")
-where = os.listdir("static/memes/where")
-how = os.listdir("static/memes/how")
-what = os.listdir("static/memes/what")
+polarL = os.listdir("static/memes/polar")
+whichL = os.listdir("static/memes/which")
+whyL = os.listdir("static/memes/why")
+whoL = os.listdir("static/memes/who")
+whenL = os.listdir("static/memes/when")
+whereL = os.listdir("static/memes/where")
+howL = os.listdir("static/memes/how")
+whatL = os.listdir("static/memes/what")
 
-advice = os.listdir("memes/what")
+adviceL = os.listdir("static/memes/advice")
 
 def questionWord(ques):
    ques = ques.lower()
@@ -31,45 +31,46 @@ def questionWord(ques):
 def choose(memes):
     return random.choice(memes)
 
-def adviceImage(string):
-    return 'static/memes/advice/' + choose(advice)
+def adviceImage():
+    return '../static/memes/advice/' + choose(adviceL)
 
 def quesImg(word):
-    path = 'static/memes/'
+    path = '../static/memes/'
     if questionWord(word) == 'what':
-        path += 'what/' + choose(what)
+        path += 'what/' + choose(whatL)
     elif questionWord(word) == 'who' or questionWord(word) == 'whose':
-        path += 'who/' + choose(who)
+        path += 'who/' + choose(whoL)
     elif questionWord(word) == 'which':
-        path += 'which/' + choose(which)
+        path += 'which/' + choose(whichL)
     elif questionWord(word) == 'why':
-        path += 'why/' + choose(why)
+        path += 'why/' + choose(whyL)
     elif questionWord(word) == 'where':
-        path += 'where/' + choose(where)
+        path += 'where/' + choose(whereL)
     elif questionWord(word) == 'when':
-        path += 'when/' + choose(when)
+        path += 'when/' + choose(whenL)
     elif questionWord(word) == 'how':
-        path += 'how/' + choose(how)
+        path += 'how/' + choose(howL)
     elif questionWord(word) in yesno:
-        path += 'polar/' +  choose(polar)
+        path += 'polar/' +  choose(polarL)
     else:
         return 'fuqu'
     return path
 
 def getImage():
-    form = cgi.FieldStorage()
-    failsafe = []
-    if form.getvalue('question'):
-        unenlightened = form.getvalue('question')
+    try:
+        currPath = ''
+        failsafe = []
+        form = request.form
+        unenlightened = form["question"]
         currPath = quesImg(unenlightened)
-    else:
-        currPath = adviceImage()
-    if currPath != 'fuqu':
-        return currPath
-    else:
-        for i in range(20):
-            failsafe.append(correctImg(choose(firstWords)) + ' ')
-        return choose(failsafe)
+        if currPath != 'fuqu' and currPath != '':
+            return currPath
+        else:
+            for i in range(20):
+                failsafe.append(quesImg(choose(firstWords)) + ' ')
+            return choose(failsafe)
+    except:
+        return "../static/memes/advice/getRekt.jpg"
 
 @app.route('/')
 def index():
