@@ -16,6 +16,7 @@ print 'content-type: text/html'
 #advice
 
 yesno = ['does', 'did', 'do', 'has', 'have', 'had', 'can', 'could', 'would', 'should', 'will', 'shall', 'is', 'was']
+firstWords = yesno + ['which','why','who','whose','where','when','how','what','advice']
 
 polar = os.listdir("memes/polar")
 which = os.listdir("memes/which")
@@ -29,32 +30,49 @@ what = os.listdir("memes/what")
 advice = os.listdir("memes/what")
 
 def questionWord(ques):
-   ques.split(' ')
-   if split[0] != 'in':
-       return split[0]
+   ques = ques.lower()
+   fun = ques.split(' ')
+   if fun[0] != 'in':
+       return fun[0]
    else:
-       return split[0] + split[1]
+       return fun[0] + fun[1]
 
 def choose(memes):
     return random.choice(memes)
 
-def image():
-    form = cgi.FieldStorage()
-    unenlightened = form.getvalue('question')
-    if questionWord(unenlightened) == 'what':
-        return choose(what)
-    if questionWord(unenlightened) == 'who' or questionWord(unenlightened) == 'whose':
-        return choose(who)
-    if questionWord(unenlightened) == 'which':
-        return choose(which)
-    if questionWord(unenlightened) == 'why':
-        return choose(why)
-    if questionWord(unenlightened) == 'where':
-        return choose(where)
-    if questionWord(unenlightened) == 'when':
-        return choose(when)
-    if questionWord(unenlightened) == 'how':
-        return choose(how)
-    if questionWord(unenlightened) in yesno:
-        return choose(polar)
-    return chooose(polar + which + why + who + when + where + how + what + advice)
+def correctImg(word):
+    path = 'memes/'
+    if questionWord(word) == 'what':
+        path += 'what/' + choose(what)
+    elif questionWord(word) == 'who' or questionWord(word) == 'whose':
+        path += 'who/' + choose(who)
+    elif questionWord(word) == 'which':
+        path += 'which/' + choose(which)
+    elif questionWord(word) == 'why':
+        path += 'why/' + choose(why)
+    elif questionWord(word) == 'where':
+        path += 'where/' + choose(where)
+    elif questionWord(word) == 'when':
+        path += 'when/' + choose(when)
+    elif questionWord(word) == 'how':
+        path += 'how/' + choose(how)
+    elif questionWord(word) in yesno:
+        path += 'polar/' +  choose(polar)
+    else:
+        return 'fuqu'
+    return path
+
+def image(string):#():
+#    form = cgi.FieldStorage()
+#    unenlightened = form.getvalue('question')
+    failsafe = []
+    currPath = correctImg(string)#(unenlightened)
+    if currPath != 'fuqu':
+        return currPath
+    else:
+        for i in range(20):
+            failsafe.append(correctImg(choose(firstWords)) + ' ')
+        return choose(failsafe)
+
+print image('what ')
+print image('fuqery ')
