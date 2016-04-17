@@ -27,8 +27,6 @@ where = os.listdir("memes/where")
 how = os.listdir("memes/how")
 what = os.listdir("memes/what")
 
-advice = os.listdir("memes/what")
-
 def questionWord(ques):
    ques = ques.lower()
    fun = ques.split(' ')
