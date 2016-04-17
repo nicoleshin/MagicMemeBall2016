@@ -32,7 +32,7 @@ def choose(memes):
     return random.choice(memes)
 
 def correctImg(word):
-    path = 'memes/'
+    path = 'static/memes/'
     if questionWord(word) == 'what':
         path += 'what/' + choose(what)
     elif questionWord(word) == 'who' or questionWord(word) == 'whose':
@@ -53,7 +53,7 @@ def correctImg(word):
         return 'fuqu'
     return path
 
-def image():
+def getImage():
     form = cgi.FieldStorage()
     unenlightened = form.getvalue('question')
     failsafe = []
@@ -72,7 +72,12 @@ def index():
 @app.route('/answers')
 @app.route('/answers/')
 def answers():
-    return render_template('answer.html', image=image())
+    return render_template('answer.html', image=getImage())
+
+@app.route('/advice')
+@app.route('/advice/')
+def advice():
+    return render_template('advice.html')
 
 if __name__ == "__main__":
     app.run()

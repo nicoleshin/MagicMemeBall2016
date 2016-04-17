@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
         <title>Magic Meme Ball</title>
-        <link href="materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="../static/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
          <style>
             body {
@@ -36,12 +36,12 @@
     </head>
     <body>
         {% if image %}
-        <img src= {{image}}>
+        <img src={{ image }}>
         <div class="row center">
-            <a href="question.html"><button class="btn waves-effect waves-light"
+            <a href="/questions"><button class="btn waves-effect waves-light"
                     id="button"  type="button">More answers...</button></a>
         or
-            <a href="advice.html"><button class="btn waves-effect waves-light"
+            <a href="/advice"><button class="btn waves-effect waves-light"
                     id="button" type="button">More advice...</button></a>
         </div>
     </body>

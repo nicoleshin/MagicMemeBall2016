@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
         <title>Magic Meme Ball</title>
-        <link href="materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="../static/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <style>
             body {
@@ -37,22 +37,17 @@
         <nav class="teal">
             <div class="nav-wrapper container"><a id="logo-container" class="brand-logo">Magic Meme Ball</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="questions.html">Questions</a></li>
-                    <li><a href="advice.html">Advice</a></li>
+                    <li><a href="/questions">Questions</a></li>
+                    <li><a href="/advice">Advice</a></li>
                 </ul>
             </div>
         </nav>
-        <br>
         <div class="row center">
-            <h2 class="header center">Ask the Magic Meme Ball
-                <br> any question your heart desires</h2>
-        </div>
-        <div id="text">
-            <input type="text" name="quesiton" id="question" placeholder="Don't let your memes be dreams"
-            onkeydown = "if (event.keyCode == 13) document.getElementById('button').click()">
+            <h2 class="header center">The Magic Meme Ball is here for you</h2>
         </div>
         <div class="row center">
-            <a href="master.py"><button class="btn waves-effect waves-light" id="button"  type="button">To Enlightenment...</button></a>
+            <a href="/answers"><button class="btn waves-effect waves-light"
+                    id="button"  type="button" name="advice">The Answers To Life Await You...</button></a>
         </div>
     </body>
 </html>
